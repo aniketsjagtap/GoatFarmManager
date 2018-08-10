@@ -52,11 +52,43 @@ class AppController extends Controller
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html
          */
         //$this->loadComponent('Security');
+		
+			$this->loadComponent('Auth', [
+			// Added this line
+			'authorize'=> 'Controller',
+			'authenticate' => [
+				'Form' => [
+					'fields' => [
+						'username' => 'email',
+						'password' => 'password'
+					]
+				]
+			],
+			'loginAction' => [
+				'controller' => 'Users',
+				'action' => 'login'
+			],
+			 // If unauthorized, return them to page they were just on
+			'unauthorizedRedirect' => $this->referer()
+		]);
+
+		// Allow the display action so our pages controller
+		// continues to work. Also enable the read only actions.
+		// $this->Auth->allow(['display', 'view', 'index']);
+		$this->Auth->allow();
     }
+	
+	public function isAuthorized($user)
+	{
+		// By default deny access.
+		return false;
+	}
 	public function beforeRender(Event $event)
 	{
 		$this->viewBuilder()->setTheme('AdminLTE');
+		//$this->viewBuilder()->setLayout('default_edit');
 		$this->set('theme',Configure::read('Theme'));
+		
 		// For CakePHP before 3.5
 		//$this->viewBuilder()->theme('AdminLTE');
 	}
