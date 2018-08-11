@@ -43,9 +43,9 @@
         <li><?= $this->Html->link(__('New Purchase'), ['controller' => 'Purchases', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Transactions'), ['controller' => 'Transactions', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Transaction'), ['controller' => 'Transactions', 'action' => 'add']) ?> </li>
-		
+	-->	
 	   <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-	
+	<!--
 	   <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Vaccinations'), ['controller' => 'Vaccinations', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Vaccination'), ['controller' => 'Vaccinations', 'action' => 'add']) ?> </li>-->

@@ -72,11 +72,15 @@ class UsersController extends AppController
 		if (!($this->Auth->user())) {
 			return $this->redirect($this->Auth->logout());
 		}
-        $user = $this->Users->get($id, [
-            'contain' => ['Farms', 'Roles', 'Statuses']
-        ]);
-
-        $this->set('user', $user);
+		
+			$user = $this->Users->get($id, [
+				'contain' => ['Farms', 'Roles', 'Statuses'],
+				'conditions' => ['Users.farm_id'=>$this->Users->get($this->Auth->user('id'))->farm_id]
+			]);
+			
+			$this->set('user', $user);
+		
+		
     }
 
     /**
@@ -137,7 +141,8 @@ class UsersController extends AppController
 			return $this->redirect($this->Auth->logout());
 		}
         $user = $this->Users->get($id, [
-            'contain' => []
+            'contain' => [],
+				'conditions' => ['Users.farm_id'=>$this->Users->get($this->Auth->user('id'))->farm_id]
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
