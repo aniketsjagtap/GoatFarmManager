@@ -51,10 +51,12 @@ class UsersController extends AppController
 			return $this->redirect($this->Auth->logout());
 		}
         $this->paginate = [
-            'contain' => ['Farms', 'Roles', 'Statuses']
+            'contain' => ['Farms', 'Roles', 'Statuses'],
+			 'conditions' => ['Users.farm_id'=>$this->Users->get($this->Auth->user('id'))->farm_id]
         ];
+		//var_dump($this->Users->get($this->Auth->user('id'))->farm_id);
         $users = $this->paginate($this->Users);
-
+		//var_dump($users);
         $this->set(compact('users'));
     }
 
@@ -100,7 +102,9 @@ class UsersController extends AppController
 			$farm->status_id = 1;
 			$farm->license_id = 2;
 			
-
+			$user->role_id = 3;
+			$user->status_id = 1;
+			
 			if ($farmsTable->save($farm)) {
 				// The $article entity contains the id now
 				$user->farm_id = $farm->id;

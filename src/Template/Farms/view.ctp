@@ -6,11 +6,13 @@
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
+      <!--  <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('Edit Farm'), ['action' => 'edit', $farm->id]) ?> </li>
         <li><?= $this->Form->postLink(__('Delete Farm'), ['action' => 'delete', $farm->id], ['confirm' => __('Are you sure you want to delete # {0}?', $farm->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Farms'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Farm'), ['action' => 'add']) ?> </li>
+		-->
+	   <li><?= $this->Html->link(__('List Farms'), ['action' => 'index']) ?> </li>
+<!--       
+	   <li><?= $this->Html->link(__('New Farm'), ['action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Statuses'), ['controller' => 'Statuses', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Status'), ['controller' => 'Statuses', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']) ?> </li>
@@ -41,10 +43,12 @@
         <li><?= $this->Html->link(__('New Purchase'), ['controller' => 'Purchases', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Transactions'), ['controller' => 'Transactions', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Transaction'), ['controller' => 'Transactions', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
+		
+	   <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
+	
+	   <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Vaccinations'), ['controller' => 'Vaccinations', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Vaccination'), ['controller' => 'Vaccinations', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('New Vaccination'), ['controller' => 'Vaccinations', 'action' => 'add']) ?> </li>-->
     </ul>
 </nav>
 <div class="farms view large-9 medium-8 columns content">
