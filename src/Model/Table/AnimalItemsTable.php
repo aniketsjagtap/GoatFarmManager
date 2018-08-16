@@ -43,10 +43,10 @@ class AnimalItemsTable extends Table
             'foreignKey' => 'farm_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('Animals', [
-            'foreignKey' => 'animal_id',
+        /*$this->belongsTo('Animals', [
+            'foreignKey' => 'animal_tag',
             'joinType' => 'INNER'
-        ]);
+        ]);*/
         $this->belongsTo('Items', [
             'foreignKey' => 'item_id',
             'joinType' => 'INNER'
@@ -78,9 +78,9 @@ class AnimalItemsTable extends Table
         $validator
             ->scalar('date')
             ->maxLength('date', 255)
-            ->requirePresence('date', 'create')
-            ->notEmpty('date');
-
+          //  ->requirePresence('date', 'create')
+            ->allowEmpty('date');
+//var_dump($validator);
         return $validator;
     }
 
@@ -94,7 +94,7 @@ class AnimalItemsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['farm_id'], 'Farms'));
-        $rules->add($rules->existsIn(['animal_id'], 'Animals'));
+
         $rules->add($rules->existsIn(['item_id'], 'Items'));
 
         return $rules;

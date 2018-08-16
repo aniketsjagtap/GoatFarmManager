@@ -30,7 +30,8 @@ class AnimalsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Farms', 'BreedTypes', 'AnimalTypes', 'Statuses']
+            'contain' => ['Farms', 'BreedTypes', 'AnimalTypes', 'Statuses'],
+			 'conditions' => ['Animals.farm_id'=>$this->Users->get($this->Auth->user('id'))->farm_id]
         ];
         $animals = $this->paginate($this->Animals);
 

@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Items Controller
@@ -12,6 +13,17 @@ use App\Controller\AppController;
  */
 class ItemsController extends AppController
 {
+	  public function initialize()
+    {
+        parent::initialize();
+       if (!($this->Auth->user())) {
+            return $this->redirect($this->Auth->logout());
+        }
+		 $usersTable = TableRegistry::get('Users');
+
+        $usersTable->newEntity();
+        $this->user= $usersTable->get($this->Auth->user('id'));
+    }
 
     /**
      * Index method
@@ -20,8 +32,10 @@ class ItemsController extends AppController
      */
     public function index()
     {
+			//var_dump($this->user->farm_id);
         $this->paginate = [
-            'contain' => ['Farms']
+            'contain' => ['Farms'],
+			 'conditions' => ['Items.farm_id'=>$this->user->farm_id]
         ];
         $items = $this->paginate($this->Items);
 

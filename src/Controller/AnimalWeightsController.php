@@ -21,7 +21,8 @@ class AnimalWeightsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Farms', 'Animals']
+            'contain' => ['Farms', 'Animals'],
+			 'conditions' => ['AnimalWeights.farm_id'=>$this->Users->get($this->Auth->user('id'))->farm_id]
         ];
         $animalWeights = $this->paginate($this->AnimalWeights);
 
@@ -54,6 +55,8 @@ class AnimalWeightsController extends AppController
         $animalWeight = $this->AnimalWeights->newEntity();
         if ($this->request->is('post')) {
             $animalWeight = $this->AnimalWeights->patchEntity($animalWeight, $this->request->getData());
+			$animalWeight->farm_id = $this->user->farm_id;
+			$animalWeight->date = time();
             if ($this->AnimalWeights->save($animalWeight)) {
                 $this->Flash->success(__('The animal weight has been saved.'));
 

@@ -21,7 +21,8 @@ class BreedingsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Farms']
+            'contain' => ['Farms'],
+			 'conditions' => ['Breedings.farm_id'=>$this->Users->get($this->Auth->user('id'))->farm_id]
         ];
         $breedings = $this->paginate($this->Breedings);
 

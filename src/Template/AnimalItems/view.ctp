@@ -22,14 +22,14 @@
 <div class="animalItems view large-9 medium-8 columns content">
     <h3><?= h($animalItem->id) ?></h3>
     <table class="vertical-table">
-        <tr>
+      <!--  <tr>
             <th scope="row"><?= __('Farm') ?></th>
-            <td><?= $animalItem->has('farm') ? $this->Html->link($animalItem->farm->name, ['controller' => 'Farms', 'action' => 'view', $animalItem->farm->id]) : '' ?></td>
+            <td><?//= $animalItem->has('farm') ? $this->Html->link($animalItem->farm->name, ['controller' => 'Farms', 'action' => 'view', $animalItem->farm->id]) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Animal') ?></th>
-            <td><?= $animalItem->has('animal') ? $this->Html->link($animalItem->animal->id, ['controller' => 'Animals', 'action' => 'view', $animalItem->animal->id]) : '' ?></td>
-        </tr>
+            <td><?//= $animalItem->has('animal') ? $this->Html->link($animalItem->animal->id, ['controller' => 'Animals', 'action' => 'view', $animalItem->animal->id]) : '' ?></td>
+        </tr>-->
         <tr>
             <th scope="row"><?= __('Item') ?></th>
             <td><?= $animalItem->has('item') ? $this->Html->link($animalItem->item->name, ['controller' => 'Items', 'action' => 'view', $animalItem->item->id]) : '' ?></td>

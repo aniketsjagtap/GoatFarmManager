@@ -21,12 +21,12 @@
     <fieldset>
         <legend><?= __('Add Animal Item') ?></legend>
         <?php
-            echo $this->Form->control('farm_id', ['options' => $farms]);
-            echo $this->Form->control('animal_id', ['options' => $animals]);
-            echo $this->Form->control('animal_tag');
+           // echo $this->Form->control('farm_id', ['options' => $farms]);
+           //echo $this->Form->control('animal_id', ['options' => $animals]);
+            echo $this->Form->control('animal_tag',['type'=>'text']);
             echo $this->Form->control('item_id', ['options' => $items]);
             echo $this->Form->control('quantity');
-            echo $this->Form->control('date');
+           // echo $this->Form->control('date');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

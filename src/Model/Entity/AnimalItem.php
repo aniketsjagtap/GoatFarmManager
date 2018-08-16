@@ -32,7 +32,7 @@ class AnimalItem extends Entity
      */
     protected $_accessible = [
         'farm_id' => true,
-        'animal_id' => true,
+       // 'animal_id' => true,
         'animal_tag' => true,
         'item_id' => true,
         'quantity' => true,
