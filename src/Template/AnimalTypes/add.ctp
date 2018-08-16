@@ -17,7 +17,7 @@
         <?php
             echo $this->Form->control('name');
             echo $this->Form->control('description');
-            echo $this->Form->control('category_id');
+            
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

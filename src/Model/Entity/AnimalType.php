@@ -10,6 +10,8 @@ use Cake\ORM\Entity;
  * @property string $name
  * @property string $description
  * @property int $category_id
+ *
+ * @property \App\Model\Entity\Category $category
  */
 class AnimalType extends Entity
 {
@@ -26,6 +28,7 @@ class AnimalType extends Entity
     protected $_accessible = [
         'name' => true,
         'description' => true,
-        'category_id' => true
+        'category_id' => true,
+        'category' => true
     ];
 }

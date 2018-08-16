@@ -115,38 +115,38 @@ class AnimalsTable extends Table
         $validator
             ->scalar('gender')
             ->maxLength('gender', 10)
-            ->requirePresence('gender', 'create')
+             ->requirePresence('gender', 'create')
             ->notEmpty('gender');
 
         $validator
             ->scalar('date_wean')
             ->maxLength('date_wean', 20)
-            ->requirePresence('date_wean', 'create')
-            ->notEmpty('date_wean');
+            // ->requirePresence('date_wean', 'create')
+            ->allowEmpty('date_wean');
 
         $validator
-            ->requirePresence('maleParent_tag', 'create')
-            ->notEmpty('maleParent_tag');
+            // ->requirePresence('maleParent_tag', 'create')
+            ->allowEmpty('maleParent_tag');
 
         $validator
-            ->requirePresence('femaleParent_tag', 'create')
-            ->notEmpty('femaleParent_tag');
+            // ->requirePresence('femaleParent_tag', 'create')
+            ->allowEmpty('femaleParent_tag');
 
         $validator
             ->numeric('maleParent_percentage')
-            ->requirePresence('maleParent_percentage', 'create')
+            // ->requirePresence('maleParent_percentage', 'create')
             ->notEmpty('maleParent_percentage');
 
         $validator
             ->numeric('femaleParent_percentage')
-            ->requirePresence('femaleParent_percentage', 'create')
+            // ->requirePresence('femaleParent_percentage', 'create')
             ->notEmpty('femaleParent_percentage');
 
         $validator
             ->scalar('purchase_location')
             ->maxLength('purchase_location', 1000)
-            ->requirePresence('purchase_location', 'create')
-            ->notEmpty('purchase_location');
+            // ->requirePresence('purchase_location', 'create')
+            ->allowEmpty('purchase_location');
 
         $validator
             ->scalar('colour')
@@ -157,59 +157,59 @@ class AnimalsTable extends Table
         $validator
             ->scalar('birth_location')
             ->maxLength('birth_location', 1000)
-            ->requirePresence('birth_location', 'create')
-            ->notEmpty('birth_location');
+            // ->requirePresence('birth_location', 'create')
+            ->allowEmpty('birth_location');
 
         $validator
             ->scalar('birth_ease')
             ->maxLength('birth_ease', 255)
-            ->requirePresence('birth_ease', 'create')
-            ->notEmpty('birth_ease');
+          //  ->requirePreallowEmptysence('birth_ease', 'create')
+            ->allowEmpty('birth_ease');
 
         $validator
             ->scalar('sales_date')
             ->maxLength('sales_date', 255)
-            ->requirePresence('sales_date', 'create')
-            ->notEmpty('sales_date');
+            // ->requirePresence('sales_date', 'create')
+            ->allowEmpty('sales_date');
 
         $validator
             ->numeric('sales_weight')
-            ->requirePresence('sales_weight', 'create')
-            ->notEmpty('sales_weight');
+            // ->requirePresence('sales_weight', 'create')
+            ->allowEmpty('sales_weight');
 
         $validator
             ->numeric('sales_price')
-            ->requirePresence('sales_price', 'create')
-            ->notEmpty('sales_price');
+            // ->requirePresence('sales_price', 'create')
+            ->allowEmpty('sales_price');
 
         $validator
             ->scalar('death_date')
             ->maxLength('death_date', 255)
-            ->requirePresence('death_date', 'create')
-            ->notEmpty('death_date');
+            // ->requirePresence('death_date', 'create')
+            ->allowEmpty('death_date');
 
         $validator
             ->scalar('death_reason')
             ->maxLength('death_reason', 1000)
-            ->requirePresence('death_reason', 'create')
-            ->notEmpty('death_reason');
+            // ->requirePresence('death_reason', 'create')
+            ->allowEmpty('death_reason');
 
         $validator
             ->numeric('purchase_price')
-            ->requirePresence('purchase_price', 'create')
-            ->notEmpty('purchase_price');
+            // ->requirePresence('purchase_price', 'create')
+            ->allowEmpty('purchase_price');
 
         $validator
             ->scalar('purchase_date')
             ->maxLength('purchase_date', 255)
-            ->requirePresence('purchase_date', 'create')
-            ->notEmpty('purchase_date');
+            // ->requirePresence('purchase_date', 'create')
+            ->allowEmpty('purchase_date');
 
         $validator
             ->scalar('description')
             ->maxLength('description', 1000)
-            ->requirePresence('description', 'create')
-            ->notEmpty('description');
+            // ->requirePresence('description', 'create')
+            ->allowEmpty('description');
 
         return $validator;
     }

@@ -9,7 +9,7 @@ use Cake\Validation\Validator;
 /**
  * AnimalTypes Model
  *
- * @property |\Cake\ORM\Association\BelongsTo $Categories
+ * @property \App\Model\Table\CategoriesTable|\Cake\ORM\Association\BelongsTo $Categories
  *
  * @method \App\Model\Entity\AnimalType get($primaryKey, $options = [])
  * @method \App\Model\Entity\AnimalType newEntity($data = null, array $options = [])

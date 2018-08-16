@@ -54,6 +54,7 @@ class AnimalsController extends AppController
         $animal = $this->Animals->newEntity();
         if ($this->request->is('post')) {
             $animal = $this->Animals->patchEntity($animal, $this->request->getData());
+            $animal->farm_id = $this->Users->get($this->Auth->user('id'))->farm_id;
             if ($this->Animals->save($animal)) {
                 $this->Flash->success(__('The animal has been saved.'));
 

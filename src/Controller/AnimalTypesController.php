@@ -20,6 +20,7 @@ class AnimalTypesController extends AppController
      */
     public function index()
     {
+        
         $animalTypes = $this->paginate($this->AnimalTypes);
 
         $this->set(compact('animalTypes'));
@@ -34,10 +35,7 @@ class AnimalTypesController extends AppController
      */
     public function view($id = null)
     {
-        $animalType = $this->AnimalTypes->get($id, [
-            'contain' => []
-        ]);
-
+       
         $this->set('animalType', $animalType);
     }
 
@@ -58,7 +56,7 @@ class AnimalTypesController extends AppController
             }
             $this->Flash->error(__('The animal type could not be saved. Please, try again.'));
         }
-        $this->set(compact('animalType'));
+        
     }
 
     /**
@@ -82,7 +80,7 @@ class AnimalTypesController extends AppController
             }
             $this->Flash->error(__('The animal type could not be saved. Please, try again.'));
         }
-        $this->set(compact('animalType'));
+       
     }
 
     /**
