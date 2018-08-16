@@ -63,14 +63,14 @@ class AnimalsTable extends Table
             'foreignKey' => 'animalWeight_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('MaleParentBreedTypes', [
+     /*   $this->belongsTo('MaleParentBreedTypes', [
             'foreignKey' => 'maleParentBreedType_id',
             'joinType' => 'INNER'
-        ]);
-        $this->belongsTo('FemaleParentBreedTypes', [
+        ]);*/
+        /*$this->belongsTo('FemaleParentBreedTypes', [
             'foreignKey' => 'femaleParentBreedType_id',
             'joinType' => 'INNER'
-        ]);
+        ]);*/
         $this->belongsTo('Statuses', [
             'foreignKey' => 'status_id',
             'joinType' => 'INNER'
@@ -227,8 +227,8 @@ class AnimalsTable extends Table
         $rules->add($rules->existsIn(['breedType_id'], 'BreedTypes'));
         $rules->add($rules->existsIn(['animalType_id'], 'AnimalTypes'));
         $rules->add($rules->existsIn(['animalWeight_id'], 'AnimalWeights'));
-        $rules->add($rules->existsIn(['maleParentBreedType_id'], 'MaleParentBreedTypes'));
-        $rules->add($rules->existsIn(['femaleParentBreedType_id'], 'FemaleParentBreedTypes'));
+       // $rules->add($rules->existsIn(['maleParentBreedType_id'], 'MaleParentBreedTypes'));
+       // $rules->add($rules->existsIn(['femaleParentBreedType_id'], 'FemaleParentBreedTypes'));
         $rules->add($rules->existsIn(['status_id'], 'Statuses'));
 
         return $rules;

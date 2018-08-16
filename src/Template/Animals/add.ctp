@@ -33,18 +33,18 @@
         <?php
           //  echo $this->Form->control('farm_id', ['options' => $farms]);
             echo $this->Form->control('tag');
-            echo $this->Form->control('dob',['type'=>'date']);
+            echo $this->Form->control('dob');
             echo $this->Form->radio('gender',['male','female'],['lable'=>'gender'],['required'=>'required']);
             echo $this->Form->control('breedType_id', ['options' => $breedTypes]);
             echo $this->Form->control('animalType_id', ['options' => $animalTypes]);
-            echo $this->Form->control('date_wean',['type'=>'date']);
+            echo $this->Form->control('date_wean');
             echo $this->Form->control('animalWeight');
             echo $this->Form->control('maleParent_tag');
             echo $this->Form->control('femaleParent_tag');
             echo $this->Form->control('maleParent_percentage');
             echo $this->Form->control('femaleParent_percentage');
-            echo $this->Form->control('BreedType_id',['label'=>'Female Breed Type']);
-            echo $this->Form->control('BreedType_id',['label'=>'Male Breed Type']);
+            echo $this->Form->control('femaleBreedType_id',['options'=>$breedTypes],['label'=>'Female Breed Type']);
+            echo $this->Form->control('maleBreedType_id',['options'=>$breedTypes],['label'=>'Male Breed Type']);
             echo $this->Form->control('purchase_location');
             echo $this->Form->control('colour');
             echo $this->Form->control('birth_location');
