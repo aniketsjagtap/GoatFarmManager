@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use Cake\ORM\TableRegistry;
 /**
  * Incomes Controller
  *
@@ -12,6 +12,17 @@ use App\Controller\AppController;
  */
 class IncomesController extends AppController
 {
+	 public function initialize()
+    {
+        parent::initialize();
+       if (!($this->Auth->user())) {
+            return $this->redirect($this->Auth->logout());
+        }
+		 $usersTable = TableRegistry::get('Users');
+
+        $usersTable->newEntity();
+        $this->user= $usersTable->get($this->Auth->user('id'));
+    }
 
     /**
      * Index method
@@ -21,7 +32,8 @@ class IncomesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['IncomeTypes', 'Farms']
+            'contain' => ['IncomeTypes', 'Farms'],
+			'conditions' => ['Incomes.farm_id'=>$this->user->farm_id]
         ];
         $incomes = $this->paginate($this->Incomes);
 
@@ -38,7 +50,8 @@ class IncomesController extends AppController
     public function view($id = null)
     {
         $income = $this->Incomes->get($id, [
-            'contain' => ['IncomeTypes', 'Farms']
+            'contain' => ['IncomeTypes', 'Farms'],
+			'conditions' => ['Incomes.farm_id'=>$this->user->farm_id]
         ]);
 
         $this->set('income', $income);

@@ -257,11 +257,7 @@
                 <td><?= h($breedings->gestation_days) ?></td>
                 <td><?= h($breedings->delivery_date) ?></td>
                 <td><?= h($breedings->description) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Breedings', 'action' => 'view', $breedings->]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Breedings', 'action' => 'edit', $breedings->]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Breedings', 'action' => 'delete', $breedings->], ['confirm' => __('Are you sure you want to delete # {0}?', $breedings->)]) ?>
-                </td>
+                
             </tr>
             <?php endforeach; ?>
         </table>
@@ -317,11 +313,7 @@
                 <td><?= h($expenses->price) ?></td>
                 <td><?= h($expenses->date) ?></td>
                 <td><?= h($expenses->description) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Expenses', 'action' => 'view', $expenses->]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Expenses', 'action' => 'edit', $expenses->]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Expenses', 'action' => 'delete', $expenses->], ['confirm' => __('Are you sure you want to delete # {0}?', $expenses->)]) ?>
-                </td>
+               
             </tr>
             <?php endforeach; ?>
         </table>
@@ -377,11 +369,7 @@
                 <td><?= h($incomes->location) ?></td>
                 <td><?= h($incomes->description) ?></td>
                 <td><?= h($incomes->date) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Incomes', 'action' => 'view', $incomes->]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Incomes', 'action' => 'edit', $incomes->]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Incomes', 'action' => 'delete', $incomes->], ['confirm' => __('Are you sure you want to delete # {0}?', $incomes->)]) ?>
-                </td>
+                
             </tr>
             <?php endforeach; ?>
         </table>

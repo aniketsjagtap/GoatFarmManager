@@ -21,6 +21,10 @@ class AnimalsController extends AppController
        if (!($this->Auth->user())) {
             return $this->redirect($this->Auth->logout());
         }
+		$usersTable = TableRegistry::get('Users');
+
+        $usersTable->newEntity();
+        $this->user= $usersTable->get($this->Auth->user('id'));
     }
     /**
      * Index method
@@ -31,7 +35,7 @@ class AnimalsController extends AppController
     {
         $this->paginate = [
             'contain' => ['Farms', 'BreedTypes', 'AnimalTypes', 'Statuses'],
-			 'conditions' => ['Animals.farm_id'=>$this->Users->get($this->Auth->user('id'))->farm_id]
+			 'conditions' => ['Animals.farm_id'=>$this->user->farm_id]
         ];
         $animals = $this->paginate($this->Animals);
 

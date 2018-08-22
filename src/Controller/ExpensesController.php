@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Expenses Controller
@@ -12,6 +13,18 @@ use App\Controller\AppController;
  */
 class ExpensesController extends AppController
 {
+    public function initialize()
+    {
+        parent::initialize();
+       if (!($this->Auth->user())) {
+            return $this->redirect($this->Auth->logout());
+        }
+		 $usersTable = TableRegistry::get('Users');
+
+        $usersTable->newEntity();
+        $this->user= $usersTable->get($this->Auth->user('id'));
+    }
+
 
     /**
      * Index method
@@ -21,7 +34,8 @@ class ExpensesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['ExpenseTypes', 'Farms']
+            'contain' => ['ExpenseTypes', 'Farms'],
+			'conditions' => ['Expenses.farm_id'=>$this->user->farm_id]
         ];
         $expenses = $this->paginate($this->Expenses);
 

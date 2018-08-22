@@ -13,6 +13,14 @@ use App\Controller\AppController;
 class AnimalWeightsController extends AppController
 {
 
+     public function initialize()
+    {
+        parent::initialize();
+       if (!($this->Auth->user())) {
+            return $this->redirect($this->Auth->logout());
+        }
+    }
+
     /**
      * Index method
      *
@@ -52,7 +60,23 @@ class AnimalWeightsController extends AppController
      */
     public function add()
     {
+        
+		if (!($this->Auth->user())) {
+            return $this->redirect($this->Auth->logout());
+        }
         $animalWeight = $this->AnimalWeights->newEntity();
+        $usersTable = TableRegistry::get('Users');
+
+        $usersTable->newEntity();
+        $user= $usersTable->get($this->Auth->user('id'));
+		
+		
+		
+		
+		
+		
+		
+		
         if ($this->request->is('post')) {
             $animalWeight = $this->AnimalWeights->patchEntity($animalWeight, $this->request->getData());
 			$animalWeight->farm_id = $this->user->farm_id;

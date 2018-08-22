@@ -1,6 +1,6 @@
 <?php
 namespace App\Controller;
-
+use Cake\ORM\TableRegistry;
 use App\Controller\AppController;
 
 /**
@@ -12,7 +12,17 @@ use App\Controller\AppController;
  */
 class TransactionsController extends AppController
 {
+public function initialize()
+    {
+        parent::initialize();
+       if (!($this->Auth->user())) {
+            return $this->redirect($this->Auth->logout());
+        }
+		 $usersTable = TableRegistry::get('Users');
 
+        $usersTable->newEntity();
+        $this->user= $usersTable->get($this->Auth->user('id'));
+    }
     /**
      * Index method
      *
@@ -21,8 +31,10 @@ class TransactionsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Farms', 'Licenses']
-        ];
+            'contain' => ['Farms', 'Licenses'],
+			'conditions' => ['Transactions.farm_id'=>$this->user->farm_id]
+                                                    
+		];
         $transactions = $this->paginate($this->Transactions);
 
         $this->set(compact('transactions'));

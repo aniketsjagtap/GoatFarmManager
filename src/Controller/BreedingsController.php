@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Breedings Controller
@@ -13,6 +14,18 @@ use App\Controller\AppController;
 class BreedingsController extends AppController
 {
 
+    public function initialize()
+    {
+        parent::initialize();
+       if (!($this->Auth->user())) {
+            return $this->redirect($this->Auth->logout());
+        }
+		 $usersTable = TableRegistry::get('Users');
+
+        $usersTable->newEntity();
+        $this->user= $usersTable->get($this->Auth->user('id'));
+    }
+
     /**
      * Index method
      *
@@ -22,7 +35,7 @@ class BreedingsController extends AppController
     {
         $this->paginate = [
             'contain' => ['Farms'],
-			 'conditions' => ['Breedings.farm_id'=>$this->Users->get($this->Auth->user('id'))->farm_id]
+			 'conditions' => ['Breedings.farm_id'=>$this->user->farm_id]
         ];
         $breedings = $this->paginate($this->Breedings);
 
@@ -52,7 +65,11 @@ class BreedingsController extends AppController
      */
     public function add()
     {
+		 
         $breeding = $this->Breedings->newEntity();
+		
+        
+		
         if ($this->request->is('post')) {
             $breeding = $this->Breedings->patchEntity($breeding, $this->request->getData());
             if ($this->Breedings->save($breeding)) {
