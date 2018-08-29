@@ -13,6 +13,8 @@ use App\Controller\AppController;
 class AnimalTypesController extends AppController
 {
 
+    
+
     /**
      * Index method
      *
