@@ -93,7 +93,7 @@ class UsersController extends AppController
 		$this->viewBuilder()->setLayout('register_edit');
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
-		var_dump($_POST);
+
 			// if (empty($_POST['Farm_name'])) {
 				// $this->Flash->error(__('Farm Name Can Not Be Empty !!!'));
 			// }
