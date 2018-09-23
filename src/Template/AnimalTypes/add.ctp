@@ -11,6 +11,8 @@
     </ul>
 </nav>
 <div class="animalTypes form large-9 medium-8 columns content">
+   
+
     <?= $this->Form->create($animalType) ?>
     <fieldset>
         <legend><?= __('Add Animal Type') ?></legend>

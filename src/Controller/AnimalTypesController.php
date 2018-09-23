@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use Cake\ORM\TableRegistry;
 /**
  * AnimalTypes Controller
  *
@@ -12,7 +12,17 @@ use App\Controller\AppController;
  */
 class AnimalTypesController extends AppController
 {
+ public function initialize()
+    {
+        parent::initialize();
+       if (!($this->Auth->user())) {
+            return $this->redirect($this->Auth->logout());
+        }
+        $usersTable = TableRegistry::get('Users');
 
+        $usersTable->newEntity();
+        $this->user= $usersTable->get($this->Auth->user('id'));
+    }
     
 
     /**
