@@ -257,7 +257,7 @@
                 <td><?= h($breedings->gestation_days) ?></td>
                 <td><?= h($breedings->delivery_date) ?></td>
                 <td><?= h($breedings->description) ?></td>
-                
+
             </tr>
             <?php endforeach; ?>
         </table>
@@ -313,7 +313,7 @@
                 <td><?= h($expenses->price) ?></td>
                 <td><?= h($expenses->date) ?></td>
                 <td><?= h($expenses->description) ?></td>
-               
+
             </tr>
             <?php endforeach; ?>
         </table>
@@ -369,7 +369,7 @@
                 <td><?= h($incomes->location) ?></td>
                 <td><?= h($incomes->description) ?></td>
                 <td><?= h($incomes->date) ?></td>
-                
+
             </tr>
             <?php endforeach; ?>
         </table>
