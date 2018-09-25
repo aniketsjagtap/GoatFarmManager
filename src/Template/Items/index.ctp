@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\Item[]|\Cake\Collection\CollectionInterface $items
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
+<!--<nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Item'), ['action' => 'add']) ?></li>
@@ -15,10 +15,10 @@
         <li><?= $this->Html->link(__('List Purchases'), ['controller' => 'Purchases', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Purchase'), ['controller' => 'Purchases', 'action' => 'add']) ?></li>
     </ul>
-</nav>
+</nav>-->
 <div class="items index large-9 medium-8 columns content">
     <h3><?= __('Items') ?></h3>
-    <table cellpadding="0" cellspacing="0">
+    <table id="items" class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
@@ -55,3 +55,39 @@
         <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
     </div>
 </div>
+
+<script>
+
+$(function () {
+  
+    $('#items').DataTable({
+      "paging": true,
+      "responsive":true,
+      "dom": 'Bfrtip',
+      "lengthMenu": [
+                            [ 10, 25, 50, -1 ],
+                            [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+                        ],
+       "buttons": [
+            
+                'pageLength',
+            
+            {
+                "extend": 'excelHtml5',
+                "title": 'Goat Form Manager Report',
+                "messageBottom": "Designed & Developed by JagTechno"
+            },
+            {
+                "extend": 'pdfHtml5',
+                "title": '',
+                "messageBottom": "Designed & Developed by JagTechno"
+            }
+        ],
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true
+    });
+  });
+</script>
