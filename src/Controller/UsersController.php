@@ -106,7 +106,7 @@ class UsersController extends AppController
 			$farm->status_id = 1;
 			$farm->license_id = 2;
 			
-			$user->role_id = 4;
+			$user->role_id = 3;
 			$user->status_id = 1;
 			
 			if ($farmsTable->save($farm)) {
