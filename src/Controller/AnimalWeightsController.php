@@ -1,6 +1,6 @@
 <?php
 namespace App\Controller;
-
+use Cake\ORM\TableRegistry;
 use App\Controller\AppController;
 
 /**
@@ -15,10 +15,14 @@ class AnimalWeightsController extends AppController
 
      public function initialize()
     {
-        parent::initialize();
+         parent::initialize();
        if (!($this->Auth->user())) {
             return $this->redirect($this->Auth->logout());
         }
+        $usersTable = TableRegistry::get('Users');
+
+        $usersTable->newEntity();
+        $this->user= $usersTable->get($this->Auth->user('id'));
     }
 
     /**
@@ -30,7 +34,7 @@ class AnimalWeightsController extends AppController
     {
         $this->paginate = [
             'contain' => ['Farms', 'Animals'],
-			 'conditions' => ['AnimalWeights.farm_id'=>$this->Users->get($this->Auth->user('id'))->farm_id]
+			 'conditions' => ['AnimalWeights.farm_id'=>$this->user->farm_id]
         ];
         $animalWeights = $this->paginate($this->AnimalWeights);
 

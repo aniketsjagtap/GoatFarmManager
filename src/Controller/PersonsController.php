@@ -1,6 +1,6 @@
 <?php
 namespace App\Controller;
-
+use Cake\ORM\TableRegistry;
 use App\Controller\AppController;
 
 /**
@@ -18,6 +18,17 @@ class PersonsController extends AppController
      *
      * @return \Cake\Http\Response|void
      */
+    public function initialize()
+    {
+        parent::initialize();
+       if (!($this->Auth->user())) {
+            return $this->redirect($this->Auth->logout());
+        }
+         $usersTable = TableRegistry::get('Users');
+
+        $usersTable->newEntity();
+        $this->user= $usersTable->get($this->Auth->user('id'));
+    }
     public function index()
     {
         $this->paginate = [

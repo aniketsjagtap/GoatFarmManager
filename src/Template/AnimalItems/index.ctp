@@ -4,18 +4,7 @@
  * @var \App\Model\Entity\AnimalItem[]|\Cake\Collection\CollectionInterface $animalItems
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Animal Item'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Farms'), ['controller' => 'Farms', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Farm'), ['controller' => 'Farms', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Animals'), ['controller' => 'Animals', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Animal'), ['controller' => 'Animals', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Items'), ['controller' => 'Items', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Item'), ['controller' => 'Items', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
+
 <div class="animalItems index large-9 medium-8 columns content">
 
     <h3><?= __('Animal Items') ?><?php print_r($animalItems); ?></h3>
@@ -70,10 +59,7 @@
 
 <script>
 
-
-
-
-  $(function () {
+$(function () {
   
     $('#animalItems').DataTable({
       "paging": true,

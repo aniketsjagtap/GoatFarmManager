@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\MedicalHistory[]|\Cake\Collection\CollectionInterface $medicalHistories
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
+<!--<nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Medical History'), ['action' => 'add']) ?></li>
@@ -15,10 +15,10 @@
         <li><?= $this->Html->link(__('List Vaccination Types'), ['controller' => 'VaccinationTypes', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Vaccination Type'), ['controller' => 'VaccinationTypes', 'action' => 'add']) ?></li>
     </ul>
-</nav>
+</nav>-->
 <div class="medicalHistories index large-9 medium-8 columns content">
     <h3><?= __('Medical Histories') ?></h3>
-    <table cellpadding="0" cellspacing="0">
+    <table id="medicalHistories" class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
@@ -75,3 +75,39 @@
         <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
     </div>
 </div>
+
+<script>
+
+$(function () {
+  
+    $('#medicalHistories').DataTable({
+      "paging": true,
+      "responsive":true,
+      "dom": 'Bfrtip',
+      "lengthMenu": [
+                            [ 10, 25, 50, -1 ],
+                            [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+                        ],
+       "buttons": [
+            
+                'pageLength',
+            
+            {
+                "extend": 'excelHtml5',
+                "title": 'Goat Form Manager Report',
+                "messageBottom": "Designed & Developed by JagTechno"
+            },
+            {
+                "extend": 'pdfHtml5',
+                "title": '',
+                "messageBottom": "Designed & Developed by JagTechno"
+            }
+        ],
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true
+    });
+  });
+</script>
